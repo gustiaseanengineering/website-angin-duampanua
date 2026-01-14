@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Informasi Pola Angin Duampanua</title>
+
+<style>
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #e0f2f1, #f9fbfc);
+    margin: 0;
+    padding: 30px;
+    color: #333;
+}
+
+h1 {
+    color: #00695c;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #00796b;
+    margin-bottom: 10px;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+.box {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+select {
+    padding: 10px 14px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #b2dfdb;
+    background: #f1fdfb;
+}
+
+img {
+    max-width: 100%;
+    margin-top: 15px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 14px;
+    color: #555;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Website Informasi Pola Angin Kelurahan Duampanua</h1>
+
+<div class="box">
+<p>
+Website ini menyajikan visualisasi arah dan kecepatan angin bulanan berupa
+diagram windrose dan tabel distribusi angin dominan sebagai pendukung
+kegiatan pertanian dan mitigasi risiko cuaca ekstrem.
+</p>
+<p><i>Sumber data: ERA5 – Copernicus Climate Data Store</i></p>
+</div>
+
+<div class="box">
+<h2>Pilih Bulan</h2>
+<select id="bulanSelect">
+<option value="">-- Pilih Bulan --</option>
+<option value="januari">Januari</option>
+<option value="februari">Februari</option>
+<option value="maret">Maret</option>
+<option value="april">April</option>
+<option value="mei">Mei</option>
+<option value="juni">Juni</option>
+<option value="juli">Juli</option>
+<option value="agustus">Agustus</option>
+<option value="september">September</option>
+<option value="oktober">Oktober</option>
+<option value="november">November</option>
+<option value="desember">Desember</option>
+</select>
+</div>
+
+<div class="box" id="windroseBox" style="display:none;">
+<h2>Diagram Windrose</h2>
+<img id="windroseImg" src="">
+</div>
+
+<div class="box" id="tabelBox" style="display:none;">
+<h2>Tabel Arah & Kecepatan Angin Dominan</h2>
+<img id="tabelImg" src="">
+</div>
+
+<footer>
+© 2026 | Program KKN-T 115 – Universitas Hasanuddin
+</footer>
+
+</div>
+
+<script>
+document.getElementById("bulanSelect").addEventListener("change", function() {
+    const bulan = this.value;
+
+    if (!bulan) {
+        document.getElementById("windroseBox").style.display = "none";
+        document.getElementById("tabelBox").style.display = "none";
+        return;
+    }
+
+    document.getElementById("windroseBox").style.display = "block";
+    document.getElementById("tabelBox").style.display = "block";
+
+    document.getElementById("windroseImg").src = "windrose/" + bulan + ".png";
+    document.getElementById("tabelImg").src = "tabel-angin/" + bulan + ".png";
+});
+</script>
+
+</body>
+</html>
